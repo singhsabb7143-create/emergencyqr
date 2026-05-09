@@ -1,50 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+    <title>Emergency QR System</title>
 
-<meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Emergency QR Medical ID</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <!-- QR Library (IMPORTANT) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>Emergency QR Medical ID</h1>
+    <h2>Emergency QR System</h2>
 
-<p>
-Enter emergency information
-</p>
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="text" id="blood" placeholder="Blood Group">
+    <input type="text" id="contact" placeholder="Emergency Contact">
 
-<input type="text"
-id="name"
-placeholder="Enter Full Name">
+    <button onclick="generateQR()">Generate QR</button>
+    <button onclick="downloadQR()">Save QR</button>
 
-<input type="text"
-id="blood"
-placeholder="Enter Blood Group">
-
-<input type="text"
-id="contact"
-placeholder="Enter Emergency Contact">
-
-<button onclick="generateQR()">
-Generate QR
-</button>
-
-<div id="qrcode"></div>
+    <div id="qrcode"></div>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <script src="script.js"></script>
 
