@@ -1,24 +1,37 @@
 function generateQR() {
+    let name = document.getElementById("name").value;
+    let blood = document.getElementById("blood").value;
+    let contact = document.getElementById("contact").value;
 
-var name =
-document.getElementById("name").value;
+    if (!name || !blood || !contact) {
+        alert("Please fill all fields");
+        return;
+    }
 
-var blood =
-document.getElementById("blood").value;
+    let data =
+        "Name: " + name +
+        "\nBlood: " + blood +
+        "\nContact: " + contact;
 
-var contact =
-document.getElementById("contact").value;
+    document.getElementById("qrcode").innerHTML = "";
 
-var data =
-"Emergency Medical ID | " +
-"Name: " + name +
-" | Blood Group: " + blood +
-" | Contact: " + contact;
+    new QRCode(document.getElementById("qrcode"), {
+        text: data,
+        width: 180,
+        height: 180
+    });
+}
 
-var qrURL =
-"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
-encodeURIComponent(data);
+function downloadQR() {
+    let img = document.querySelector("#qrcode img");
 
-document.getElementById("qrcode").innerHTML =
-"<img src='" + qrURL + "'>";
+    if (!img) {
+        alert("Generate QR first!");
+        return;
+    }
+
+    let link = document.createElement("a");
+    link.href = img.src;
+    link.download = "emergency-qr.png";
+    link.click();
 }
